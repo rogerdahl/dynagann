@@ -1,0 +1,1 @@
+/usr/bin/cc  -std=c11 -Wall    CMakeFiles/test_filecache_lz4.dir/test_filecache_lz4.c.o CMakeFiles/test_filecache_lz4.dir/console-colors.c.o  -o test_filecache_lz4 -rdynamic 

@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wvla -Wall    CMakeFiles/test_bluenoise.dir/test_bluenoise.c.o CMakeFiles/test_bluenoise.dir/lz4.cpp.o CMakeFiles/test_bluenoise.dir/lodepng.c.o CMakeFiles/test_bluenoise.dir/sds.c.o CMakeFiles/test_bluenoise.dir/whereami.c.o  -o test_bluenoise -rdynamic -lcurl 

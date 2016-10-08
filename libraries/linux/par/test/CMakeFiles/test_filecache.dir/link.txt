@@ -1,0 +1,1 @@
+/usr/bin/cc  -std=c11 -Wall    CMakeFiles/test_filecache.dir/test_filecache.c.o CMakeFiles/test_filecache.dir/console-colors.c.o  -o test_filecache -rdynamic 

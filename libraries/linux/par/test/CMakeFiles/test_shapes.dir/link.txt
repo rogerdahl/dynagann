@@ -1,0 +1,1 @@
+/usr/bin/cc  -std=c11 -Wall    CMakeFiles/test_shapes.dir/test_shapes.c.o CMakeFiles/test_shapes.dir/console-colors.c.o  -o test_shapes -rdynamic -lm 
