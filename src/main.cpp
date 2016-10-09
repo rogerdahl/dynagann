@@ -166,7 +166,6 @@ int main(int argc, char** argv)
     // std::cout << glm::to_string(ProjectionMatrix) << std::endl;
 
     Pys pys;
-    return 0;
 
     OglText oglText(window_w, window_h, FONT_PATH, FONT_SIZE);
 
