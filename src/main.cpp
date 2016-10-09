@@ -195,7 +195,7 @@ int main(int argc, char** argv)
         averageNewtonStep.addSec(glfwGetTime());
         glfwSetTime(0.0);
 
-        const int dropRate = 10;
+        const int dropRate = 5;
         static int nextDrop = dropRate;
         static int dropType = 0;
         if (!--nextDrop) {
@@ -409,23 +409,19 @@ int main(int argc, char** argv)
 
 		glfwSwapBuffers(window);
 
-//        // Create movie
-//        // avconv -framerate 60 -i img/frame_%06d.tga -c:v libx264 -pix_fmt yuv420p -r 60 -crf 16 video.mp4
-//        if (!recDirPath.empty()) {
-//            create_directories(recDirPath);
-//            static int frameIdx = 0;
-//            char fileName[100];
-//            sprintf(fileName, "frame_%06d.tga", frameIdx++);
-////            auto filePath = recDirPath;
-////            filePath += path(fileName);
-////            cout << filePath.c_str() << endl;
-//            save_screenshot((recDirPath / path(fileName)).string(), window_w, window_h);
-//            if (frameIdx == 3 * 60 * 60) {
-//                break;
-//            }
-//        }
+        // Create movie
+        // avconv -framerate 60 -i img/frame_%06d.tga -c:v libx264 -pix_fmt yuv420p -r 60 -crf 16 video.mp4
+        if (!recDirPath.empty()) {
+            create_directories(recDirPath);
+            static int frameIdx = 0;
+            auto fileName = fmt::format("frame_{:06d}.tga", frameIdx++);
+            save_screenshot((recDirPath / path(fileName)).string(), window_w, window_h);
+            if (frameIdx == 2 * 60 * 60) {
+                break;
+            }
+        }
 
-//        checkGlError();
+        checkGlError();
 
 		glfwPollEvents();
     }

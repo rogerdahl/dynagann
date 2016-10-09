@@ -1,6 +1,10 @@
-## DynaGann
+## Dynagann
 
-[![DynaGann Demo](https://img.youtube.com/vi/Sa7ZHlGxsnc/0.jpg)](https://youtu.be/Sa7ZHlGxsnc)
+[![Dynagann Demo](./screenshot.png)](https://youtu.be/LG7yV0jbOIU)
+
+Experimenting with physics simulation and visualization using Newton Dynamics and OpenGL.
+
+This program renders the scene shown in the video above. 
 
 ### Compiling on Linux
 
