@@ -8,17 +8,17 @@
 
 #### Packaged dependencies
 
-* `$ sudo apt-get install --yes cmake git build-essential libglm-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libboost-dev libboost-filesystem-dev libglew-dev libfreetype6-dev libglfw3-dev` 
+* $ `sudo apt-get install --yes cmake git build-essential libglm-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libboost-dev libboost-filesystem-dev libglew-dev libfreetype6-dev libglfw3-dev` 
 
 #### DynaGann source
 
-* `$ git clone <copy and paste the "Clone with HTTPS " URL from the top of this page>`
+* $ `git clone <copy and paste the "Clone with HTTPS " URL from the top of this page>`
 
 #### par
 
-* `$ cd dynagann/libraries/build`
-* `$ git clone https://github.com/prideout/par.git`
-* `$ mv par/ ../linux/`
+* $ `cd dynagann/libraries/build`
+* $ `git clone https://github.com/prideout/par.git`
+* $ `mv par/ ../linux/`
 
 #### fmt
 
