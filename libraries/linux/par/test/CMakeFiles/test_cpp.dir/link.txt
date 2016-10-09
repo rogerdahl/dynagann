@@ -1,1 +1,0 @@
-/usr/bin/c++   -Wvla -Wall    CMakeFiles/test_cpp.dir/test_cpp.cpp.o CMakeFiles/test_cpp.dir/lz4.cpp.o CMakeFiles/test_cpp.dir/lodepng.c.o CMakeFiles/test_cpp.dir/sds.c.o CMakeFiles/test_cpp.dir/whereami.c.o  -o test_cpp -rdynamic -lcurl 

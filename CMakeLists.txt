@@ -13,8 +13,21 @@ else()
 set(LIBRARIES ${CMAKE_SOURCE_DIR}/libraries/win64)
 endif()
 
-# FreeType2
+## GLFW
+#if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+##	find_package(GLFW REQUIRED)
+##	set(GLFW_LINK_DIRS "")
+#	set(GLFW_LIBRARIES GLFW.lib)
+#	set(GLFW_INCLUDE_DIRS ${LIBRARIES}/GLFW-2.6.3/include)
+#	set(GLFW_LINK_DIRS ${LIBRARIES}/GLFW-2.6.3/builds/Release)
+#else()
+#	set(GLFW_LIBRARIES GLFW.lib)
+#	set(GLFW_INCLUDE_DIRS ${LIBRARIES}/GLFW-2.6.3/include)
+#	set(GLFW_LINK_DIRS ${LIBRARIES}/GLFW-2.6.3/builds/Release)
+#endif()
+#${LIBRARIES}/glfw-3.1.2/include/GLFW/
 
+# FreeType2
 #CPPFLAGS += $(shell freetype-config --cflags)
 #LDFLAGS += $(shell freetype-config --libs)
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
@@ -29,6 +42,8 @@ endif()
 # Boost
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 # https://cmake.org/cmake/help/v3.0/module/FindBoost.html
+find_package(Boost 1.58.0 REQUIRED)
+set(BOOST_LIBRARIES boost_filesystem boost_system)
 else()
 set(BOOST_LIBRARIES libboost_filesystem-vc140-mt-1_60 libboost_system-vc140-mt-1_60)
 set(BOOST_INCLUDE_DIR ${LIBRARIES}/boost_1_60_0)
@@ -43,6 +58,9 @@ endif()
 
 # GLEW
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+set(GLEW_LIBRARIES GLEW)
+#set(GLEW_INCLUDE_DIR ${LIBRARIES}/glew-1.13.0/include)
+#set(GLEW_LINK_DIR ${LIBRARIES}/glew-1.13.0/lib/Release/x64)
 else()
 set(GLEW_LIBRARIES glew32.lib)
 set(GLEW_INCLUDE_DIR ${LIBRARIES}/glew-1.13.0/include)
@@ -81,10 +99,10 @@ set(SOURCE_FILES
 )
 
 include_directories(
-    ${LIBRARIES}/par/
-    ${LIBRARIES}/newton/coreLibrary_300/source/newton/
-    ${LIBRARIES}/cppformat-2.1.0/
-    ${LIBRARIES}/glfw-3.1.2/include/GLFW/
+    ${LIBRARIES}/par
+    ${LIBRARIES}/newton-3.13/inc
+    ${LIBRARIES}/fmt-3.0.0
+	${GLFW_INCLUDE_DIRS}
     ${FREETYPE_INCLUDE_DIRS}
     ${BOOST_INCLUDE_DIR}
 	${GLM_INCLUDE_DIR}
@@ -93,22 +111,23 @@ include_directories(
 )
 
 link_directories(
-    ${LIBRARIES}/newton/lib
+	${LIBRARIES}/newton-3.13/lib
     ${LIBRARIES}/glfw-3.1.2
-    ${LIBRARIES}/cppformat-2.1.0/cppformat
+    ${LIBRARIES}/fmt-3.0.0/fmt
 	${FREETYPE_LINK_DIRS}
     ${BOOST_LINK_DIR}
     ${GLEW_LINK_DIR}
 )
 
 link_libraries(
-    glfw3 cppformat Newton
+    glfw fmt Newton
     ${FREETYPE_LIBRARIES}
 	${GLEW_LIBRARIES}
 	${OPENGL_LIBRARIES}
 	${X_LIBRARIES}
 	${GCC_LIBRARIES}
-	# The boost libraries are not required here because Boost supports VS' autolink feature.
+	# For Windows, the boost libraries are not required here because Boost supports VS' autolink feature.
+    ${BOOST_LIBRARIES}
 )
 
 # Remove GLM warning about having switched from degrees to radians as default.
@@ -116,6 +135,11 @@ add_definitions(-DGLM_FORCE_RADIANS)
 
 # Copy shaders to binary dir.
 file(GLOB SHADER_PATHS ${SOURCE_DIR}/shaders/*)
-file(COPY ${SHADER_PATHS} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+file(COPY ${SHADER_PATHS} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/shaders)
+
+# Copy fonts to binary dir.
+file(GLOB FONT_PATHS ${CMAKE_SOURCE_DIR}/fonts/*)
+file(COPY ${FONT_PATHS} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/fonts)
+
 
 add_executable(dynagann ${SOURCE_FILES})

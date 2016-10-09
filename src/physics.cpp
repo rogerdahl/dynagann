@@ -2,12 +2,12 @@
 #include <cstdlib>
 #include <iostream>
 
-#include <glfw3.h>
+#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/string_cast.hpp>
-#include <cppformat/format.h>
+#include <fmt/format.h>
 
 #include "physics.h"
 
@@ -75,6 +75,13 @@ Pys::Pys()
     coneCollision_ = NewtonCreateCone(newtonWorld_, 0.5f, 2.0f, shapeId_++, NULL);
 }
 
+Pys::~Pys()
+{
+    NewtonDestroyAllBodies(newtonWorld_);
+    NewtonDestroyCollision(floorCollision_);
+    NewtonDestroyCollision(boxCollision_);
+    NewtonDestroy(newtonWorld_);
+}
 void Pys::addBox()
 {
     static float rot = 0.0f;
@@ -140,14 +147,6 @@ void Pys::addCone()
     NewtonBodySetUserData(rigidBodyCone, (void*)3);
 
     newtonBodyDeque_.push_back(rigidBodyCone);
-}
-
-Pys::~Pys()
-{
-    NewtonDestroyAllBodies(newtonWorld_);
-    NewtonDestroyCollision(floorCollision_);
-    NewtonDestroyCollision(boxCollision_);
-    NewtonDestroy(newtonWorld_);
 }
 
 void Pys::step()

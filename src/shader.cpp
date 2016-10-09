@@ -7,7 +7,7 @@
 
 #include <boost/filesystem/path.hpp>
 #include <GL/glew.h>
-#include <cppformat/format.h>
+#include <fmt/format.h>
 
 #include "shader.h"
 

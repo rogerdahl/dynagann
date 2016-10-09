@@ -1,1 +1,0 @@
-/usr/bin/cc  -std=c11 -Wall    CMakeFiles/test_sprune.dir/test_sprune.c.o CMakeFiles/test_sprune.dir/console-colors.c.o  -o test_sprune -rdynamic 

@@ -1,1 +1,0 @@
-/usr/bin/c++   -Wvla -Wall    CMakeFiles/test_msquares.dir/test_msquares.c.o CMakeFiles/test_msquares.dir/lz4.cpp.o CMakeFiles/test_msquares.dir/lodepng.c.o CMakeFiles/test_msquares.dir/sds.c.o CMakeFiles/test_msquares.dir/whereami.c.o  -o test_msquares -rdynamic -lcurl 

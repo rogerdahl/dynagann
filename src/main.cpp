@@ -9,12 +9,12 @@
 
 #include <boost/filesystem.hpp>
 #include <GL/glew.h>
-#include <glfw3.h>
+#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/string_cast.hpp>
-#include <cppformat/format.h>
+#include <fmt/format.h>
 
 #include "mesh.h"
 #include "physics.h"
@@ -74,7 +74,6 @@ int main(int argc, char** argv)
 //        }
 //        cout << endl;
 //    }
-
     // Create window and OpenGL context.
     glfwWindowHint(GLFW_SAMPLES, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -167,6 +166,7 @@ int main(int argc, char** argv)
     // std::cout << glm::to_string(ProjectionMatrix) << std::endl;
 
     Pys pys;
+    return 0;
 
     OglText oglText(window_w, window_h, FONT_PATH, FONT_SIZE);
 
@@ -410,23 +410,23 @@ int main(int argc, char** argv)
 
 		glfwSwapBuffers(window);
 
-        // Create movie
-        // avconv -framerate 60 -i img/frame_%06d.tga -c:v libx264 -pix_fmt yuv420p -r 60 -crf 16 video.mp4
-        if (!recDirPath.empty()) {
-            create_directories(recDirPath);
-            static int frameIdx = 0;
-            char fileName[100];
-            sprintf(fileName, "frame_%06d.tga", frameIdx++);
-//            auto filePath = recDirPath;
-//            filePath += path(fileName);
-//            cout << filePath.c_str() << endl;
-            save_screenshot((recDirPath / path(fileName)).string(), window_w, window_h);
-            if (frameIdx == 3 * 60 * 60) {
-                break;
-            }
-        }
+//        // Create movie
+//        // avconv -framerate 60 -i img/frame_%06d.tga -c:v libx264 -pix_fmt yuv420p -r 60 -crf 16 video.mp4
+//        if (!recDirPath.empty()) {
+//            create_directories(recDirPath);
+//            static int frameIdx = 0;
+//            char fileName[100];
+//            sprintf(fileName, "frame_%06d.tga", frameIdx++);
+////            auto filePath = recDirPath;
+////            filePath += path(fileName);
+////            cout << filePath.c_str() << endl;
+//            save_screenshot((recDirPath / path(fileName)).string(), window_w, window_h);
+//            if (frameIdx == 3 * 60 * 60) {
+//                break;
+//            }
+//        }
 
-        checkGlError();
+//        checkGlError();
 
 		glfwPollEvents();
     }

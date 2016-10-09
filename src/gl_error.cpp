@@ -1,6 +1,6 @@
 #include <string>
 #include <GL/glew.h>
-#include <cppformat/format.h>
+#include <fmt/format.h>
 
 #include "gl_error.h"
 

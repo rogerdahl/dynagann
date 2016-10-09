@@ -7,7 +7,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/string_cast.hpp>
-#include <cppformat/format.h>
+#include <fmt/format.h>
 
 #include "ogl_text.h"
 #include "shader.h"
@@ -25,6 +25,7 @@ const int BACKGROUND_PADDING_PIXELS = 0;
 OglText::OglText(u32 window_w, u32 window_h, const boost::filesystem::path& fontPath, u32 font_h)
 : window_w_(window_w), window_h_(window_h), tex_w_h_(0), font_h_(font_h), fontPath_(fontPath)
 {
+    printf("1\n");
     createFontTexture();
     fmt::print("Info: Font texture size: {0}x{0}\n", tex_w_h_);
     
