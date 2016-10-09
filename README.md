@@ -1,6 +1,6 @@
 ## DynaGann
 
-[![DynaGann Demo](https://youtu.be/Sa7ZHlGxsnc/0.jpg)](https://youtu.be/Sa7ZHlGxsnc)
+[![DynaGann Demo](https://img.youtube.com/vi/Sa7ZHlGxsnc/0.jpg)](https://youtu.be/Sa7ZHlGxsnc)
 
 ### Compiling on Linux
 
